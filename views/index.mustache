@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>To-Do</title>
+  </head>
+<style media="screen">
+  ul{
+    list-style-type: none;
+  }
+</style>
+  <body>
+
+
+          <h1>Todo</h1>
+
+          {{#testy}}
+          <div>
+          Hello {{name}}
+          You have just won {{value}} dollars!
+          {{#in_ca}}
+          Well, {{taxed_value}} dollars, after taxes.
+          {{/in_ca}}
+        </div>
+        {{/testy}}
+
+
+        <form action='/add' method="post">
+          <input  type="text" placeholder="todo" name="task">
+          <button type="submit">Add Todo</button>
+          </form>
+
+
+
+
+          {{#todos}}
+
+                {{^yetTodo}}
+                  <ul>
+                    <li>
+                      <form action='/complete' method="post">
+                        <button value="{{todo}}" type="submit" name="complete">Mark Complete</button>
+                        {{todo}}
+                        </form>
+                    </li>
+                  </ul>
+                    {{/yetTodo}}
+
+
+                    {{/todos}}
+                    
+                    <h1> Complete </h1>
+
+          {{#todos}}
+          {{#yetTodo}}
+          <ul>
+            <li>
+              {{todo}}
+            </li>
+          </ul>
+      {{/yetTodo}}
+        {{/todos}}
+
+
+
+
+
+
+
+          <!-- <ul>
+          {{#todoList}}
+            <li>
+              {{#complete}}
+                <input type="checkbox" checked>
+                <del>{{text}}</del>
+              {{/complete}}
+              {{^complete}}
+                <input type="checkbox">
+                {{text}}
+              {{/complete}}
+          {{/todoList}}
+            </li>
+          </ul> -->
+
+
+  </body>
+</html>
